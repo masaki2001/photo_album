@@ -1,0 +1,9 @@
+<% flash.each do |key, value| %>
+  <% if key == 'failure' %>
+    <ul>
+      <% value.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
