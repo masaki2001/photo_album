@@ -1,5 +1,5 @@
 <div>
-  <p>ログアウト</p>
+  <%= link_to "ログアウト", sessions_path, method: :delete %>
   <br>
   <h1>写真アップロード</h1>
   <%= render partial: "layouts/model_error_message", locals: { model: @user_photo } %>
