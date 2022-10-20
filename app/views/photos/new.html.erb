@@ -1,0 +1,17 @@
+<div>
+  <p>ログアウト</p>
+  <br>
+  <h1>写真アップロード</h1>
+  <%= render partial: "layouts/model_error_message", locals: { model: @user_photo } %>
+  <%= form_with model: @user_photo, url: user_photos_path, method: :post do |form| %>
+    <%= form.label :title, "タイトル：" %>
+    <%= form.text_field :title %>
+    <br>
+    <%= form.label :image, "画像ファイル：" %>
+    <%= form.file_field :image %>
+    <br>
+    <%= form.submit "アップロード" %>
+    <br>
+    <%= link_to "キャンセル", user_photos_path(@user) %>
+  <% end %>
+</div>
