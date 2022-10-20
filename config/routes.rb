@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root "sessions#new"
   post "sessions" => "sessions#create"
   delete "sessions" => "sessions#destroy"
+  resources :users do
+    resources :photos, only: [:index, :new, :create]
+  end
 end
