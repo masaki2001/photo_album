@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_action :authenticate?
   before_action :set_user
+  before_action :set_url_options, only: [:index]
   def index
     @user_photos = @user.user_photos
   end
@@ -26,5 +27,9 @@ class PhotosController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def set_url_options
+    ActiveStorage::Current.host = request.host
   end
 end

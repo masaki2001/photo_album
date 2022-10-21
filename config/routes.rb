@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :external_services, only: [] do
     collection do
       post :auth
+      post :tweet
     end
   end
   get  "oauth/callback"  => "external_services#callback"
