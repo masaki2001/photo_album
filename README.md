@@ -1,24 +1,40 @@
-# README
+## バージョン
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+rails: 6.1.7
+ruby: 3.1.0
+mysql: 8.0.31
+```
 
-Things you may want to cover:
+## セットアップ
 
-* Ruby version
+### インストールからサーバー起動まで
 
-* System dependencies
+```sh
+$ git clone git@github.com:masaki2001/photo_album.git
+$ bundle install
+$ brew install imagemagick
 
-* Configuration
+$ rails s
+```
 
-* Database creation
+### MySQLのセットアップ
 
-* Database initialization
+```sh
+$ mysql.server start
+$ mysql_secure_installation
+$ mysql -u root -p
 
-* How to run the test suite
+mysql> create user 'photo_album_user'@'localhost' identified by 'password';
+mysql> grant all on *.* to 'photo_album_user'@'localhost';
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+（Sequel Pro等、DB GUI管理ツールを使用される場合は[こちら](https://qiita.com/ysk1o/items/7f0ca12ced72363f9448)を参考に認証プラグインを変更してください）
 
-* Deployment instructions
+環境変数を`.env`ファイルに設定しております。
 
-* ...
+## その他
+
+かかった時間：13時間
+
+`7. 連携アプリケーションへツイートを投稿`の課題にて、ツイート投稿先のリクエストに対するレスポンスが500ステータスで返却されておりエラーメッセージも返ってこなかったため連携サービス先でのツイート投稿が確認できませんでした。
