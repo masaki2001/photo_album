@@ -1,6 +1,24 @@
 class ExternalServicesController < ApplicationController
   before_action :authenticate?
 
+  def tweet
+    request_params = {
+      text: params[:text],
+      url: params[:image_url]
+    }
+    headers = {
+      "Content-Type" => "application/json",
+      "Authorization" => "Bearer #{session[:access_token]}"
+    }
+    uri = URI.parse(ENV['TWEET_URL'])
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = uri.scheme === "https"
+    response = http.post(uri.path, request_params.to_json, headers)
+    p response.body if response.code != 200
+
+    redirect_to user_photos_path(current_user)
+  end
+
   def auth
     uri = URI.parse(ENV['AUTH_URL'])
     uri.query = URI.encode_www_form(

@@ -11,6 +11,7 @@
       <div>
         <p><%= user_photo.title %></p>
         <%= image_tag user_photo.image.representation(resize_to_limit: [200, 200]) %>
+        <%= button_to 'ツイートする', tweet_external_services_path(title: user_photo.title, image_url: rails_representation_url(user_photo.image.variant({}), only_path: false)), method: :post %>
       </div>
     </div>
   <% end %>
