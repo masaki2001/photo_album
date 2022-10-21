@@ -7,4 +7,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :photos, only: [:index, :new, :create]
   end
+  resources :external_services, only: [] do
+    collection do
+      post :auth
+    end
+  end
+  get  "oauth/callback"  => "external_services#callback"
 end

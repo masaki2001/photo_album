@@ -2,6 +2,8 @@
   <%= link_to "ログアウト", sessions_path, method: :delete %>
   <br>
   <h1>写真一覧</h1>
+  <%= link_to "MyTweetAppと連携", auth_external_services_path, method: :post %>
+  <br>
   <%= link_to "写真をアップロード", new_user_photo_path(@user) %>
   <br>
   <% @user_photos.reverse.each do |user_photo| %>
