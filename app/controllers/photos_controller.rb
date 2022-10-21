@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :authenticate?
   before_action :set_user
   def index
-
+    @user_photos = @user.user_photos
   end
 
   def new

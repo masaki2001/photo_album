@@ -1,0 +1,15 @@
+<div>
+  <%= link_to "ログアウト", sessions_path, method: :delete %>
+  <br>
+  <h1>写真一覧</h1>
+  <%= link_to "写真をアップロード", new_user_photo_path(@user) %>
+  <br>
+  <% @user_photos.reverse.each do |user_photo| %>
+    <div style="float: left; margin: 10px;">
+      <div>
+        <p><%= user_photo.title %></p>
+        <%= image_tag user_photo.image.representation(resize_to_limit: [200, 200]) %>
+      </div>
+    </div>
+  <% end %>
+</div>
